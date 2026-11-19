@@ -1,0 +1,104 @@
+{
+ "en_profile_on_EN": {
+  "n_train": 99,
+  "n_test": 32,
+  "raw_bytes": 1080,
+  "codec_bytes": 399,
+  "ratio": 2.706766917293233,
+  "mean_codec_bytes": 12.46875,
+  "oov_token_rate_test": 0.13541666666666666,
+  "single_frame_14B": 0.71875,
+  "within_2_frames": 1.0,
+  "exact_roundtrip": 1.0,
+  "char_huffman_bytes": 658,
+  "ratio_vs_char_huffman": 1.6491228070175439,
+  "zlib_bytes": 1310,
+  "train_ratio": 2.7598656591099915,
+  "error_detection": {
+   "1_bit_flips": {
+    "trials": 9600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "2_bit_flips": {
+    "trials": 9600,
+    "undetected": 1,
+    "rate": 0.00010416666666666667
+   },
+   "3_bit_flips": {
+    "trials": 9600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "8_bit_flips": {
+    "trials": 9600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "truncation": {
+    "trials": 64,
+    "undetected": 0,
+    "rate": 0.0
+   }
+  },
+  "no_crc_single_flip_undetected_rate": 0.363125
+ },
+ "en+hi_profile_on_EN+HI": {
+  "n_train": 129,
+  "n_test": 42,
+  "raw_bytes": 1406,
+  "codec_bytes": 532,
+  "ratio": 2.642857142857143,
+  "mean_codec_bytes": 12.666666666666666,
+  "oov_token_rate_test": 0.11857707509881422,
+  "single_frame_14B": 0.7619047619047619,
+  "within_2_frames": 1.0,
+  "exact_roundtrip": 1.0,
+  "char_huffman_bytes": 870,
+  "ratio_vs_char_huffman": 1.6353383458646618,
+  "zlib_bytes": 1703,
+  "train_ratio": 2.67459324155194,
+  "error_detection": {
+   "1_bit_flips": {
+    "trials": 12600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "2_bit_flips": {
+    "trials": 12600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "3_bit_flips": {
+    "trials": 12600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "8_bit_flips": {
+    "trials": 12600,
+    "undetected": 0,
+    "rate": 0.0
+   },
+   "truncation": {
+    "trials": 84,
+    "undetected": 0,
+    "rate": 0.0
+   }
+  },
+  "no_crc_single_flip_undetected_rate": 0.36373015873015874
+ },
+ "hindi_subset": {
+  "n": 10,
+  "en_profile_bytes": 240,
+  "enhi_profile_bytes": 124
+ },
+ "en_random_split_ratio": {
+  "mean": 2.6952057810020937,
+  "min": 2.4033018867924527,
+  "max": 2.892857142857143
+ },
+ "sos_record_4B": {
+  "single_flip_trials": 1536,
+  "undetected": 48
+ }
+}
