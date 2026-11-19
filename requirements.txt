@@ -1,0 +1,4 @@
+# The C reference needs only a C99 compiler and make.
+# Python model, simulator and evaluation scripts:
+numpy>=1.26
+pytest>=8

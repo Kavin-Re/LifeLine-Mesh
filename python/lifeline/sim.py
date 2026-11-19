@@ -19,11 +19,11 @@ from .queue import CustodyQueue, Entry, Q_OK, Q_OK_EVICT, Q_DUP, Q_REJ_FULL
 from .replay import ReplayTable, NEW
 
 SF_S = 0.64                                  # 64 slots x 10 ms
-CLASS_LIFE = (15, 11, 8)                     # life codes for SOS / STATUS / BULK (PROTOCOL.md 6.2)
+CLASS_LIFE = (15, 11, 8)                     # life codes for SOS / STATUS / BULK (PROTOCOL.md section 3)
 CLASS_NAMES = ("SOS", "STATUS", "BULK")
 
 
-def life_seconds(code):                      # life code 0..15 -> seconds (PROTOCOL.md 6.2)
+def life_seconds(code):                      # life code 0..15 -> seconds (PROTOCOL.md section 3)
     return 4.0 * 1.5 ** code
 
 

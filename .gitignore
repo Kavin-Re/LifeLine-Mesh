@@ -46,3 +46,10 @@ dist/
 *.wlf
 *.fsdb
 *.vpd
+
+# --- LifeLine-Mesh ---
+c/build/
+*.tgz
+*.tar.gz
+.ruff_cache/
+.mypy_cache/

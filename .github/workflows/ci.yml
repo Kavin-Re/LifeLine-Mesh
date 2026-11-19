@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  c-reference:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict C99 build and shared-vector tests
+        run: make -C c test CC=${{ matrix.cc }}
+      - name: No allocator symbols in the library objects
+        run: make -C c nomalloc CC=${{ matrix.cc }}
+      - name: Unit tests and fuzz under ASan + UBSan (2 seeds)
+        if: matrix.cc == 'gcc'
+        run: make -C c san CC=gcc ITERS=300000
+
+  python-model:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Protocol, codec and simulator tests
+        run: python -m pytest -q python/tests
+      - name: C test vectors are exactly what the Python model generates
+        run: |
+          python python/tools_gen_vectors.py c/tests
+          git diff --exit-code -- c/tests

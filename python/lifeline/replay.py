@@ -1,6 +1,6 @@
 """Anti-replay + duplicate suppression: sliding 64-counter window per (origin, class). Mirror of c/src/replay.c.
 Table has fixed capacity; when full, the least-recently-updated entry is evicted (documented weakness: an evicted
-origin's old frames can be accepted again; see PROTOCOL.md 8.3). Call only AFTER the MAC has verified."""
+origin's old frames can be accepted again; see docs/PROTOCOL.md section 6). Call only AFTER the MAC has verified."""
 NEW, DUP, OLD = 0, 1, 2
 W = 64
 M64 = (1 << 64) - 1

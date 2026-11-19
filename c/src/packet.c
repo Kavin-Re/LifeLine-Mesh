@@ -27,7 +27,7 @@ int ll_encode_data(const ll_keys_t *k, const ll_data_t *d, uint8_t *out, size_t 
     if (d->cls > 2 || d->ttl > 15 || d->life > 15 || d->plen > LL_MAX_PAYLOAD || d->frag > 1) return LL_E_ARG;
     n = LL_DATA_OVERHEAD + d->plen;
     if (cap < n) return LL_E_ARG;
-    b0 = (uint8_t)((LL_VER << 6) | (LL_T_DATA << 4) | (d->cls << 2) | d->frag);
+    b0 = (uint8_t)((LL_VER << 6) | ((unsigned)LL_T_DATA << 4) | ((unsigned)d->cls << 2) | d->frag);
     out[0] = b0; out[1] = (uint8_t)((d->ttl << 4) | d->life);
     put16(out + 2, d->origin); put16(out + 4, d->prev); put16(out + 6, d->next); put32(out + 8, d->ctr);
     if (d->plen) memcpy(out + 12, d->payload, d->plen);
@@ -39,14 +39,14 @@ int ll_encode_data(const ll_keys_t *k, const ll_data_t *d, uint8_t *out, size_t 
 
 int ll_encode_beacon(const ll_keys_t *k, const ll_beacon_t *b, uint8_t *out, size_t cap, size_t *outlen) {
     if (!k || !b || !out || !outlen || cap < 15 || b->flags > 15) return LL_E_ARG;
-    out[0] = (uint8_t)((LL_VER << 6) | (LL_T_BEACON << 4) | b->flags);
+    out[0] = (uint8_t)((LL_VER << 6) | ((unsigned)LL_T_BEACON << 4) | b->flags);
     put16(out + 1, b->node); put32(out + 3, b->epoch); out[7] = b->cost; out[8] = b->free_slots;
     mac4(k, 'B', out, 9, out + 9); seal_crc(out, 13); *outlen = 15; return LL_OK;
 }
 
 int ll_encode_ack(const ll_keys_t *k, const ll_ack_t *a, uint8_t *out, size_t cap, size_t *outlen) {
     if (!k || !a || !out || !outlen || cap < 15 || a->cls > 2 || a->status > 2) return LL_E_ARG;
-    out[0] = (uint8_t)((LL_VER << 6) | (LL_T_ACK << 4) | (a->cls << 2) | a->status);
+    out[0] = (uint8_t)((LL_VER << 6) | ((unsigned)LL_T_ACK << 4) | ((unsigned)a->cls << 2) | a->status);
     put16(out + 1, a->acker); put16(out + 3, a->origin); put32(out + 5, a->ctr);
     mac4(k, 'A', out, 9, out + 9); seal_crc(out, 13); *outlen = 15; return LL_OK;
 }
