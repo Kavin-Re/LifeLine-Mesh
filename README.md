@@ -1,5 +1,10 @@
 # LifeLine-Mesh
 
+> **Archived 2026-11-23.** Why: this is a protocol design, a simulator and a host-compiled C reference
+> that never met a radio, and no field or hardware test is planned. The weaknesses listed under
+> [Known weaknesses](#known-weaknesses) are not fixed. The code stays readable and runnable; it is not
+> maintained, the roadmap below is not scheduled, and it must not be relied on for real emergencies.
+
 **Design, executable model and C99 reference for an offline emergency-messaging mesh: authenticated 32-byte frames, keyed channel hopping, custody-transfer store-and-forward, and a compact text codec.**
 
 [![CI](https://github.com/Kavin-Re/LifeLine-Mesh/actions/workflows/ci.yml/badge.svg)](https://github.com/Kavin-Re/LifeLine-Mesh/actions/workflows/ci.yml)
@@ -219,5 +224,4 @@ one, against prediction attacks.
 
 ## License
 
-No license file has been added yet, so default copyright applies. Until one is added, please ask
-before reusing the code.
+Copyright 2026 Kavin K K. Licensed under the [Apache License, Version 2.0](LICENSE); see also [NOTICE](NOTICE).
